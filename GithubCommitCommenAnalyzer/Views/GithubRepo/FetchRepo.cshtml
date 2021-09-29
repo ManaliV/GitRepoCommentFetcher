@@ -1,0 +1,39 @@
+﻿@model GithubCommitCommenAnalyzer.Models.GithubRepo
+
+@{
+    ViewData["Title"] = "FetchRepo";
+}
+
+<h1>FetchRepo</h1>
+
+<h4>GithubRepo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FetchRepo">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccessToken" class="control-label"></label>
+                <input asp-for="AccessToken" class="form-control" />
+                <span asp-validation-for="AccessToken" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GithubURL" class="control-label"></label>
+                <input asp-for="GithubURL" class="form-control" />
+                <span asp-validation-for="GithubURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
