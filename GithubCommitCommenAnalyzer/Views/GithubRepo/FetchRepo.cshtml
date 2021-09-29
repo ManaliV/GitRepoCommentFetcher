@@ -1,12 +1,10 @@
-﻿@model GithubCommitCommenAnalyzer.Models.GithubRepo
+﻿@model DomainModels.GithubRepo
 
 @{
     ViewData["Title"] = "FetchRepo";
 }
 
-<h1>FetchRepo</h1>
-
-<h4>GithubRepo</h4>
+<h4>Fetch the Comments</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,7 +26,7 @@
                 <span asp-validation-for="GithubURL" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Fetch" class="btn btn-primary" />
             </div>
         </form>
     </div>

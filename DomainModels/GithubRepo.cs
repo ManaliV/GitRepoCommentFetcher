@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GithubCommitCommenAnalyzer.Models
+
+namespace DomainModels
 {
     public class GithubRepo
     {
@@ -16,6 +17,8 @@ namespace GithubCommitCommenAnalyzer.Models
 
         [Required]         
         public string GithubURL { get; set; }
+
+        public ICollection<Commit> Commits { get; set; }
 
     }
 }

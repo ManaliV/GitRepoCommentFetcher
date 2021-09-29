@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GithubCommitCommenAnalyzer.Models;
+using DomainModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Utility;
 
 namespace GithubCommitCommenAnalyzer.Controllers
 {
@@ -27,14 +28,21 @@ namespace GithubCommitCommenAnalyzer.Controllers
         {
             if(ModelState.IsValid)
             {
+                //Fetch 
+                GitRepoAccessor gitRepoAccessor = new GitRepoAccessor(model.UserName, model.AccessToken, model.GithubURL);
+                List<CommitComment> commentList=await gitRepoAccessor.GetAllComments();
 
+                CommentAnalyzercs commentAnalyzer = new CommentAnalyzercs(commentList);
+                Dictionary<string,int>frequencyCounter= commentAnalyzer.CountFrequency();
 
-
-
+                //Sort using Bubble Sort
+                
 
             }
             return View();
         }
+
+
 
         
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Util
@@ -18,7 +19,7 @@ namespace Util
     {
         protected Node<T> head = null;
         protected Node<T> tail = null;
-
+        
         public void add(T data)
         {
            
@@ -26,7 +27,7 @@ namespace Util
            
             if (head == null)
             {
-                head = newNode;
+                head = newNode;                
                 tail = newNode;
                 newNode.next = head;
             }
@@ -37,6 +38,30 @@ namespace Util
                 tail = newNode;
                 tail.next = head;
             }
+        }
+
+        public string LastOrDefault()
+        {
+            if (tail != null)
+                return tail.data.ToString();
+            return String.Empty;
+        }
+
+        public Dictionary<string,int>CountFrequency()
+        {
+            Dictionary<string, int> frequencyCounter = new Dictionary<string, int>();
+
+            Node<T> currentNode = head;
+            while(currentNode!=tail)
+            {
+                if (frequencyCounter.ContainsKey(currentNode.data.ToString()))
+                    frequencyCounter[currentNode.data.ToString()] += 1;
+                else
+                    frequencyCounter[currentNode.data.ToString()] = 1;
+
+            }
+           
+            return frequencyCounter;
         }
 
         public string display()
