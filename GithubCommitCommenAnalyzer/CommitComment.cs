@@ -20,7 +20,7 @@ namespace GithubCommitCommenAnalyzer
             }
         }
 
-        public CircularLinkList<string> AllCommentList { get; private set; }
+        public CircularLinkList<string> AllCommentList { get { return _commentList; } }
 
 
 

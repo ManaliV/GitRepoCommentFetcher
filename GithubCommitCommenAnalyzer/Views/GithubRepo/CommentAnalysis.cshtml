@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">$(function () {
+        
+        $('#btnExport').on('click', function () {
+           
+            
+        });
+});
+</script>
+<script>
+    $(document).ready(function () {
+
+        $("#btnExport").click(function () {
+
+            var data = {};
+
+            //Collects the data from textboxes and adds it to the dictionary
+            $("#StepsTable tr").each(function (index, item) {
+                var tds = $(this).find("td");
+                var word = $(tds).eq(0).text();
+                var count = $(tds).eq(1).text();
+                data["stepsDictionary[" + index + "].Key"] = word;
+                data["stepsDictionary[" + index + "].Value"] = count;
+            });
+
+            //Makes ajax call to controller
+            $.ajax({
+                type: "POST",
+                data: data,
+                url: "/GithubRepo/Export",
+                success: function (message) {
+                    alert(message);
+                }
+            });
+
+        });
+
+    });
+</script>
+
+@*<form asp-controller="GithubRepo" asp-action="Export" method="post">*@
+    <div class="col-md-5">
+        <input type="submit" name="Export" value="Download" id="btnExport"
+               class="btn btn-primary" asp-action="Export" />
+    </div>
+
+    @{
+        var frequencyCounter = Model.Values;
+        <table border="1" id="StepsTable">
+            <tr>
+                <td>Comment Word</td>
+                <td>Word Count</td>
+            </tr>
+            @foreach (var key in frequencyCounter.Keys)
+            {
+                <tr>
+                    <td>@key</td>
+                    <td>@frequencyCounter[key]</td>
+                </tr>
+            }
+
+        </table>
+    }
+
+@*</form>*@
+<br />
+<br />
+<br />
+

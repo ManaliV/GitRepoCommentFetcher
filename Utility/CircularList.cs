@@ -52,15 +52,22 @@ namespace Util
             Dictionary<string, int> frequencyCounter = new Dictionary<string, int>();
 
             Node<T> currentNode = head;
-            while(currentNode!=tail)
+            do
             {
                 if (frequencyCounter.ContainsKey(currentNode.data.ToString()))
                     frequencyCounter[currentNode.data.ToString()] += 1;
                 else
                     frequencyCounter[currentNode.data.ToString()] = 1;
 
-            }
-           
+                currentNode = currentNode.next;
+            } while (currentNode != tail);
+
+
+            if (frequencyCounter.ContainsKey(currentNode.data.ToString()))
+                frequencyCounter[currentNode.data.ToString()] += 1;
+            else
+                frequencyCounter[currentNode.data.ToString()] = 1;
+
             return frequencyCounter;
         }
 

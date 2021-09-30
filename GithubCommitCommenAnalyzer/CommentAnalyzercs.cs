@@ -29,7 +29,8 @@ namespace GithubCommitCommenAnalyzer
 
         private Dictionary<string, int> MergeTwoDictionaries(Dictionary<string, int> frequencyCounter, Dictionary<string, int> eachCommentWordDictionary)
         {
-            foreach (var key in eachCommentWordDictionary)
+            var keyList=eachCommentWordDictionary.Keys.ToList();
+            foreach (var key in keyList)
             {
                 if (frequencyCounter.ContainsKey(key.ToString()))
                     frequencyCounter[key.ToString()] += eachCommentWordDictionary[key.ToString()];

@@ -50,7 +50,8 @@ namespace GithubCommitCommenAnalyzer
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=GithubRepo}/{action=FetchRepo}/{id?}");
+
+                    pattern: "{controller=GitHubRepo}/{action=Index}/{id?}");
             });
         }
     }

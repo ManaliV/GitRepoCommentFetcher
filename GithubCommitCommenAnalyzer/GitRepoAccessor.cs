@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using DomainModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NPOI.HSSF.Util;
+using NPOI.SS.UserModel;
+using NPOI.SS.Util;
+using NPOI.XSSF.UserModel;
+
 using Util;
 
 namespace GithubCommitCommenAnalyzer.Controllers
@@ -17,6 +24,7 @@ namespace GithubCommitCommenAnalyzer.Controllers
             _userName = username;
             _accessToken = accessToken;
             _repository = repository;
+       
         }
 
         public async Task<List<CommitComment>> GetAllComments()
